@@ -1,4 +1,7 @@
 #!/usr/bin/env python3
+"""
+first use of async function(async def ...)
+"""
 import asyncio
 import random
 
