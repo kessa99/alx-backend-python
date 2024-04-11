@@ -4,12 +4,12 @@ Parameterize a unit test
 """
 import unittest
 from parameterized import parameterized
-from .utils import access_nested_map
+from utils import access_nested_map
 
 
 class TestAccessNestedMap(unittest.TestCase):
     """
-    class that inherits from unittest.c=TestCase
+    class that inherits from unittest.TestCase
     """
     @parameterized.expand([
         ({"a": 1}, ("a",), 1),
@@ -21,3 +21,9 @@ class TestAccessNestedMap(unittest.TestCase):
         method to test
         """
         self.assertEqual(access_nested_map(nested_map, path), expected_result)
+
+        """ to test tha a keyError is raised for the following inputs"""
+        @parameterized.expand([
+            ({}, ("a",)),
+            ({"a": 1}, ("a", "b")),
+        ])
