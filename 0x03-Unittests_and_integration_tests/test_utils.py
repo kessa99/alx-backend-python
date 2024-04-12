@@ -3,7 +3,7 @@
 Parameterize a unit test
 """
 import unittest
-from unittest.mock import patch
+from unittest.mock import patch, Mock
 from parameterized import parameterized
 from utils import access_nested_map, get_json
 
@@ -41,7 +41,7 @@ class TestGetJson(unittest.TestCase):
     """
     @parameterized.expand([
         ("http://example.com", {"payload": True}),
-        ("http://holberton.io", {"payload": False})
+        ("http://holberton.io", {"payload": False}),
     ])
     @patch('test_utils.get_json')
     def test_get_json(self, test_url, test_payload, mock_get):
